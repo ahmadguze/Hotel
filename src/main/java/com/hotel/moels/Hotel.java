@@ -58,7 +58,7 @@ public class Hotel {
     public void setRate(double rate) {
         this.rate = rate;
     }
-    
+
     @JsonBackReference
     public City getCities() {
         return city;
