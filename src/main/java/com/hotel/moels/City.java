@@ -51,7 +51,7 @@ public class City {
         this.location = location;
     }
 
-    @JsonBackReference
+    @JsonManagedReference
     public List<Hotel> getHotels() {
         return hotels;
     }

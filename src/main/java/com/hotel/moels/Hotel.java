@@ -58,7 +58,7 @@ public class Hotel {
         this.rate = rate;
     }
 
-    @JsonManagedReference
+    @JsonBackReference
     public City getCity() {
         return city;
     }
