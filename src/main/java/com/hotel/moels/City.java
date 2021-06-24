@@ -56,8 +56,8 @@ public class City {
         return hotels;
     }
 
-    public void setHotels(List<Hotel> hotel) {
-        this.hotels = hotel;
+    public void setHotels(List<Hotel> hotels) {
+        this.hotels = hotels;
     }
 
     public List<Hotel> ThreeNearest() {

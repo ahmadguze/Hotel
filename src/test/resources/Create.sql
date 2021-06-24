@@ -12,23 +12,23 @@ VALUES (5, 'Alkhalil', 12.7, 40.6);
 
 
 
-INSERT INTO hotel (name,  longitude, latitude,City_id)
+INSERT INTO city (name,  longitude, latitude,City_id)
 VALUES ('t3', 77, 40.5,1);
 
-INSERT INTO hotel (name,  longitude, latitude,City_id)
+INSERT INTO city (name,  longitude, latitude,City_id)
 VALUES ('t1', 79, 40.5,1);
 
-INSERT INTO hotel (name,  longitude, latitude,City_id)
+INSERT INTO city (name,  longitude, latitude,City_id)
 VALUES ('t2', 70, 40.5,1);
 
-INSERT INTO hotel (name,  longitude, latitude,City_id)
+INSERT INTO city (name,  longitude, latitude,City_id)
 VALUES ('n1', 77, 25,2);
 
-INSERT INTO hotel (name,  longitude, latitude,City_id)
+INSERT INTO city (name,  longitude, latitude,City_id)
 VALUES ('n2', 90, 20.3,2);
 
-INSERT INTO hotel (name,  longitude, latitude,City_id)
+INSERT INTO city (name,  longitude, latitude,City_id)
 VALUES ('n3', 535, 33.5,2);
 
-INSERT INTO hotel (name,  longitude, latitude,City_id)
+INSERT INTO city (name,  longitude, latitude,City_id)
 VALUES ('n4', 11, 40.5,2);

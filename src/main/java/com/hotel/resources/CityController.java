@@ -1,6 +1,7 @@
 package com.hotel.resources;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.hotel.helper.LocationException;
 import com.hotel.moels.City;
 import com.hotel.moels.Hotel;
 import com.hotel.repositories.CityRepository;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,6 +34,12 @@ public class CityController {
     public List<City> showAll(){
         System.out.println("GET");
         return (List<City>) cityRepository.findAll();
+    }
+
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(LocationException.class)
+    public String handleLocationException(){
+          return "longitude must be between -180 and 180 and latitude between -90 and 90";
     }
 
     @PostMapping(value = "city")

@@ -6,11 +6,7 @@ import com.hotel.repositories.CityRepository;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.init.ScriptUtils;
-import org.springframework.test.annotation.DirtiesContext;
-
 import javax.transaction.Transactional;
 import java.sql.SQLException;
 import java.util.List;
@@ -22,7 +18,7 @@ class HotelApplicationTests {
 
     @BeforeEach
     public void before() throws SQLException {
-      //  ScriptUtils.executeSqlScript(jdbc.getDataSource().getConnection(), new ClassPathResource("/Create.sql"));
+        //  ScriptUtils.executeSqlScript(jdbc.getDataSource().getConnection(), new ClassPathResource("/Create.sql"));
     }
 
 
@@ -36,7 +32,7 @@ class HotelApplicationTests {
     @Test
     void testAll(){
         List<City> all= (List<City>) cityRepository.findAll();
-        
+
         for(City city : all){
             System.out.println(city);
         }
