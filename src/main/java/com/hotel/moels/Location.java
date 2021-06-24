@@ -5,24 +5,24 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class Location {
-    private double longitude;
-    private double latitude;
+    private Double longitude;
+    private Double latitude;
 
-    public double getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) throws Exception {
+    public void setLongitude(Double longitude) throws LocationException {
         if(longitude>180|| longitude<-180)
             throw  new LocationException();
         this.longitude = longitude;
     }
 
-    public double getLatitudes() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitudes(double latitudes) throws Exception {
+    public void setLatitude(Double latitudes) throws LocationException {
 
         if(longitude>90 || longitude<-90)
             throw new LocationException();

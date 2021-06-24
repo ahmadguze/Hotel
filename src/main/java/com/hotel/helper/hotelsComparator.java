@@ -36,10 +36,10 @@ public class hotelsComparator implements Comparator<Hotel> {
         Location location1 = o1.getLocation();
         Location location2 = o2.getLocation();
 
-        double differanceBetweenCityAndO1 = haversine(location1.getLatitudes(), location1.getLongitude()
-                , cityLocation.getLatitudes(), cityLocation.getLongitude());
-        double differanceBetweenCityAndO2 = haversine(location2.getLatitudes(), location2.getLongitude()
-                , cityLocation.getLatitudes(), cityLocation.getLongitude());
+        double differanceBetweenCityAndO1 = haversine(location1.getLatitude(), location1.getLongitude()
+                , cityLocation.getLatitude(), cityLocation.getLongitude());
+        double differanceBetweenCityAndO2 = haversine(location2.getLatitude(), location2.getLongitude()
+                , cityLocation.getLatitude(), cityLocation.getLongitude());
         return Double.compare(differanceBetweenCityAndO1, differanceBetweenCityAndO2);
 
     }

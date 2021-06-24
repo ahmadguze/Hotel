@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hotel.helper.LocationException;
 import com.hotel.moels.City;
 import com.hotel.moels.Hotel;
+import com.hotel.moels.Location;
 import com.hotel.repositories.CityRepository;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,14 +58,30 @@ public class CityController {
         return new ResponseEntity<City>(city.get(), HttpStatus.OK);
     }
 
-    @PostMapping(value = "city/{id}")
+    @PutMapping(value = "city/{id}")
     public ResponseEntity<City> update(@PathVariable Long id,@RequestBody City city){
-        System.out.println("PUT");
         City existingCity= cityRepository.findById(id).orElse(null);
         if(existingCity == null)
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         existingCity.setName(city.getName());
         existingCity.setLocation(city.getLocation());
+        City savedCity = cityRepository.save(existingCity);
+        return new ResponseEntity(savedCity, HttpStatus.NOT_FOUND);
+    }
+
+    @PatchMapping(value = "city/{id}")
+    public ResponseEntity<City> PartiallyUpdate(@PathVariable Long id,@RequestBody City city){
+        City existingCity= cityRepository.findById(id).orElse(null);
+        if(existingCity == null)
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        Location existingLocation = existingCity.getLocation();
+        Location location = city.getLocation();
+        if(city.getName() != null)
+              existingCity.setName(city.getName());
+        if(location  != null){
+            if(location.getLatitude() != null)
+                existingLocation.setLatitude(location.getLatitude());
+        }
         City savedCity = cityRepository.save(existingCity);
         return new ResponseEntity(savedCity, HttpStatus.NOT_FOUND);
     }
