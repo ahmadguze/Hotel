@@ -30,6 +30,7 @@ public class hotelsComparator implements Comparator<Hotel> {
         return rad * c;
     }
 
+
     @Override
     public int compare(Hotel o1, Hotel o2) {
         Location location1 = o1.getLocation();

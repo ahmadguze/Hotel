@@ -13,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+
 @RestController
 @RequestMapping
 public class CityController {
@@ -36,6 +38,15 @@ public class CityController {
     @ResponseStatus(HttpStatus.CREATED)
     public City create(@RequestBody City city){
           return cityRepository.save(city);
+    }
+
+    @GetMapping("city/{id}")
+    public ResponseEntity<City> getOne(@PathVariable Long id){
+        Optional<City> city = cityRepository.findById(id);
+        if(!city.isPresent()){
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<City>(city.get(), HttpStatus.OK);
     }
 
     @PostMapping(value = "city/{id}")

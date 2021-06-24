@@ -62,7 +62,7 @@ public class City {
 
     public List<Hotel> ThreeNearest() {
         List<Hotel> copyOfList = new ArrayList<Hotel>(hotels);
-        Collections.sort(copyOfList, new hotelsComparator(this.getLocation()));
+        Collections.sort(copyOfList, new hotelsComparator(this.getLocation()).reversed());
         return copyOfList.subList(0, Math.min(copyOfList.size(), 3));
     }
 
