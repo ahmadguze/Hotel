@@ -17,8 +17,6 @@ public class CityController {
 
     @Autowired
     CityRepository cityRepository;
-
-
     @GetMapping("city")
     public List<City> showAll(){
         return (List<City>) cityRepository.findAll();

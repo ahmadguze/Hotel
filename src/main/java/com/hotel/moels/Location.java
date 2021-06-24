@@ -1,14 +1,10 @@
 package com.hotel.moels;
-
 import javax.persistence.Embeddable;
-import java.util.Comparator;
+
 @Embeddable
-public class Location{
+public class Location {
     private double longitude;
     private double latitude;
-
-
-
 
     public double getLongitude() {
         return longitude;

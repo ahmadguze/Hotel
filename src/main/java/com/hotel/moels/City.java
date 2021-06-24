@@ -20,7 +20,6 @@ public class City {
     private String name;
     @Embedded
     private Location location;
-
     @OneToMany(mappedBy = "city")
     private List<Hotel> hotels;
 
@@ -51,6 +50,7 @@ public class City {
     public void setLocation(Location location) {
         this.location = location;
     }
+
     @JsonBackReference
     public List<Hotel> getHotels() {
         return hotels;
@@ -59,12 +59,13 @@ public class City {
     public void setHotels(List<Hotel> hotel) {
         this.hotels = hotel;
     }
-    
-    public List<Hotel> ThreeNearest(){
+
+    public List<Hotel> ThreeNearest() {
         List<Hotel> copyOfList = new ArrayList<Hotel>(hotels);
         Collections.sort(copyOfList, new hotelsComparator(this.getLocation()));
         return copyOfList.subList(0, Math.min(copyOfList.size(), 3));
     }
+
     @Override
     public String toString() {
         return "City{" +
