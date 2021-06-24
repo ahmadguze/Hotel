@@ -36,6 +36,7 @@ class HotelApplicationTests {
     @Test
     void testAll(){
         List<City> all= (List<City>) cityRepository.findAll();
+        
         for(City city : all){
             System.out.println(city);
         }

@@ -51,12 +51,12 @@ public class City {
     public void setLocation(Location location) {
         this.location = location;
     }
-    @JsonManagedReference
-    public List<Hotel> getHotel() {
+    @JsonBackReference
+    public List<Hotel> getHotels() {
         return hotels;
     }
 
-    public void setHotel(List<Hotel> hotel) {
+    public void setHotels(List<Hotel> hotel) {
         this.hotels = hotel;
     }
     

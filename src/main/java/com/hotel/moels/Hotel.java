@@ -59,12 +59,12 @@ public class Hotel {
         this.rate = rate;
     }
 
-    @JsonBackReference
-    public City getCities() {
+    @JsonManagedReference
+    public City getCity() {
         return city;
     }
 
-    public void setCities(City cities) {
+    public void setCity(City cities) {
         this.city = cities;
     }
 
