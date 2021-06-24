@@ -3,6 +3,7 @@ package com.hotel.moels;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.hotel.helper.Haversine;
 import org.hibernate.annotations.ColumnDefault;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
@@ -13,7 +14,7 @@ import java.util.List;
 
 
 @Entity
-public class Hotel {
+public class Hotel implements Comparable<Hotel> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -76,5 +77,17 @@ public class Hotel {
                 ", rate=" + rate +
                 ", city=" + city +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Hotel o) {
+        Location location1 = getLocation();
+        Location location2 = o.getLocation();
+        Location cityLocation = this.city.getLocation();
+        double differanceBetweenCityAndO1 = Haversine.haversine(location1.getLatitude(), location1.getLongitude()
+                , cityLocation.getLatitude(), cityLocation.getLongitude());
+        double differanceBetweenCityAndO2 =  Haversine.haversine(location2.getLatitude(), location2.getLongitude()
+                , cityLocation.getLatitude(), cityLocation.getLongitude());
+        return Double.compare(differanceBetweenCityAndO1, differanceBetweenCityAndO2);
     }
 }

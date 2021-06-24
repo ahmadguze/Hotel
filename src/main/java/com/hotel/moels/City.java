@@ -1,16 +1,9 @@
 package com.hotel.moels;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.hotel.helper.hotelsComparator;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 public class City {
@@ -62,8 +55,7 @@ public class City {
 
     public List<Hotel> ThreeNearest() {
         List<Hotel> copyOfList = new ArrayList<Hotel>(hotels);
-        Collections.sort(copyOfList, new hotelsComparator(this.getLocation()).reversed());
-        return copyOfList.subList(0, Math.min(copyOfList.size(), 3));
+        return hotels.stream().sorted().limit(3).collect(Collectors.toList());
     }
 
     @Override

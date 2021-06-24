@@ -1,20 +1,19 @@
 package com.hotel.moels;
-import com.hotel.helper.LocationException;
-
 import javax.persistence.Embeddable;
+import javax.validation.constraints.Size;
 
 @Embeddable
 public class Location {
+    @Size(min = -180, max = 180)
     private Double longitude;
+    @Size(min = -90, max = 90)
     private Double latitude;
 
     public Double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(Double longitude) throws LocationException {
-        if(longitude>180|| longitude<-180)
-            throw  new LocationException();
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 
@@ -22,10 +21,7 @@ public class Location {
         return latitude;
     }
 
-    public void setLatitude(Double latitudes) throws LocationException {
-
-        if(longitude>90 || longitude<-90)
-            throw new LocationException();
+    public void setLatitude(Double latitudes){
         this.latitude = latitudes;
     }
 
