@@ -28,6 +28,7 @@ public class CityController {
 
     @GetMapping("city")
     public List<City> showAll(){
+        System.out.println("GET");
         return (List<City>) cityRepository.findAll();
     }
 
@@ -37,14 +38,16 @@ public class CityController {
           return cityRepository.save(city);
     }
 
-    @PutMapping(value = "city/{id}")
+    @PostMapping(value = "city/{id}")
     public ResponseEntity<City> update(@PathVariable Long id,@RequestBody City city){
+        System.out.println("PUT");
         City existingCity= cityRepository.findById(id).orElse(null);
-        if(city == null)
-            return new ResponseEntity<City>(HttpStatus.NOT_FOUND);
+        if(existingCity == null)
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
         existingCity.setName(city.getName());
         existingCity.setLocation(city.getLocation());
-        return new ResponseEntity<City>(cityRepository.save(existingCity),HttpStatus.OK);
+        City savedCity = cityRepository.save(existingCity);
+        return new ResponseEntity(savedCity, HttpStatus.NOT_FOUND);
     }
 
 
