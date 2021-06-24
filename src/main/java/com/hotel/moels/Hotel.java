@@ -23,7 +23,7 @@ public class Hotel {
     @ColumnDefault("0")
     private double rate;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private City city;
 
     public Long getId() {

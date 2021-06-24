@@ -20,7 +20,7 @@ public class City {
     private String name;
     @Embedded
     private Location location;
-    @OneToMany(mappedBy = "city")
+    @OneToMany(mappedBy = "city",cascade = CascadeType.ALL)
     private List<Hotel> hotels;
 
     public City() {

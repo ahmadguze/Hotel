@@ -32,7 +32,6 @@ public class HotelController {
 
     @GetMapping("hotel")
     public List<Hotel> showAll(){
-        System.out.println("GET");
         return (List<Hotel>) hotelRepository.findAll();
     }
 
@@ -57,7 +56,7 @@ public class HotelController {
         return new ResponseEntity<Hotel>(hotel.get(), HttpStatus.OK);
     }
 
-    @PostMapping(value = "hotel/{id}")
+    @PutMapping(value = "hotel/{id}")
     public ResponseEntity<Hotel> update(@PathVariable Long id,@RequestBody Hotel hotel){
         System.out.println("PUT");
         Hotel existingHotel= hotelRepository.findById(id).orElse(null);
