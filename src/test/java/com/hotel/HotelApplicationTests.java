@@ -16,11 +16,6 @@ class HotelApplicationTests {
     @Autowired
     JdbcTemplate  jdbc;
 
-    @BeforeEach
-    public void before() throws SQLException {
-        //  ScriptUtils.executeSqlScript(jdbc.getDataSource().getConnection(), new ClassPathResource("/Create.sql"));
-    }
-
 
     @Autowired
     CityRepository cityRepository;

@@ -1,4 +1,4 @@
 FROM openjdk:16
-ADD target/app.jar app.jar
+ADD target/Hotel.jar hotel.jar
 EXPOSE 8086
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "hotel.jar"]

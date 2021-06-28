@@ -15,6 +15,17 @@ public class History {
     private String table;
     private Long rowId;
 
+    public History(String operation, String method, String table, Long rowId) {
+        this.operation = operation;
+        this.method = method;
+        this.table = table;
+        this.rowId = rowId;
+    }
+
+    public History(){
+
+    }
+
     public Long getId() {
         return id;
     }
